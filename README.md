@@ -1,3 +1,6 @@
 spring boot oauth 
  - oauth 
- - header authorization
+ - header authorization (not yet)
+ - spring cloud integration (planned)
+ 
+ 
