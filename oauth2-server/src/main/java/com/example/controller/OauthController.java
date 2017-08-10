@@ -1,12 +1,11 @@
 package com.example.controller;
 
 import com.example.entity.OauthClientDetails;
-import com.example.repository.OauthClientDetailsRepository;
 import com.example.service.OauthClientDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class OauthController {
 
     @Autowired
-    OauthClientDetailsService oauthClientDetailsService;
+    private OauthClientDetailsService oauthClientDetailsService;
 
-    @RequestMapping(value = "/header", method = RequestMethod.POST)
-    public String headerAuthorization(@RequestParam("X-Site-Client-Id") String clientId,
-                                      @RequestParam("X-Site-Client-Secret") String clientSecret) {
+    @RequestMapping(value = "/header", method = RequestMethod.GET)
+    public String headerAuthorization(@RequestHeader("X-Site-Client-Id") String clientId,
+                                      @RequestHeader("X-Site-Client-Secret") String clientSecret) {
 
         String result = "N";
 
