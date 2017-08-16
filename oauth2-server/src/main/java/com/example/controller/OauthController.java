@@ -19,15 +19,9 @@ public class OauthController {
     public String headerAuthorization(@RequestHeader("X-Site-Client-Id") String clientId,
                                       @RequestHeader("X-Site-Client-Secret") String clientSecret) {
 
-        String result = "N";
-
         OauthClientDetails oauthClientDetails
                 = oauthClientDetailsService.getOauthClientDetails(clientId, clientSecret);
 
-        if (oauthClientDetails != null) {
-            result = "Y";
-        }
-
-        return result;
+        return oauthClientDetails != null ? "Y" : "N";
     }
 }

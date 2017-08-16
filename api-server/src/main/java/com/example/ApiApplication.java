@@ -26,9 +26,6 @@ public class ApiApplication {
             public void configure(HttpSecurity http) throws Exception {
 
                 http.headers().frameOptions().disable();
-//                http.requestMatcher(new HeaderRequestMatcher()).antMatcher("/members").anonymous().and()
-//                    .authorizeRequests().antMatchers("/members/**").access("#oauth2.hasScope('read')")
-//                    .anyRequest().authenticated();
 
                 http.authorizeRequests()
                         .requestMatchers(new HeaderRequestMatcher()).permitAll()
@@ -67,9 +64,6 @@ public class ApiApplication {
 
             ResponseEntity<String> responseEntity = restTemplate.exchange("http://localhost:8080/oauth/header", HttpMethod.GET, entity, String.class);
 
-//            String authResult = restTemplate.getForObject("http://localhost:8080/oauth/header", String.class);
-//            System.out.println("response entity ::: " + responseEntity.getBody());
-//            return true;
 
             return ("Y".equals(responseEntity.getBody()));
         }
